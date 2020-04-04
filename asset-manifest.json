@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/css/main.66bf9b42.chunk.css",
+    "main.js": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/js/main.d998a1ae.chunk.js",
+    "main.js.map": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/js/main.d998a1ae.chunk.js.map",
+    "runtime-main.js": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/js/runtime-main.58170881.js",
+    "runtime-main.js.map": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/js/runtime-main.58170881.js.map",
+    "static/css/2.de424728.chunk.css": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/css/2.de424728.chunk.css",
+    "static/js/2.af91c62a.chunk.js": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/js/2.af91c62a.chunk.js",
+    "static/js/2.af91c62a.chunk.js.map": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/js/2.af91c62a.chunk.js.map",
+    "index.html": "/jaydippatel83/jaydippatel83.pj-gmail.com/index.html",
+    "precache-manifest.b06f874264af253f6b66fb5aa8e168d6.js": "/jaydippatel83/jaydippatel83.pj-gmail.com/precache-manifest.b06f874264af253f6b66fb5aa8e168d6.js",
+    "service-worker.js": "/jaydippatel83/jaydippatel83.pj-gmail.com/service-worker.js",
+    "static/css/2.de424728.chunk.css.map": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/css/2.de424728.chunk.css.map",
+    "static/css/main.66bf9b42.chunk.css.map": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/css/main.66bf9b42.chunk.css.map",
+    "static/js/2.af91c62a.chunk.js.LICENSE.txt": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/js/2.af91c62a.chunk.js.LICENSE.txt",
+    "static/media/logo.webp": "/jaydippatel83/jaydippatel83.pj-gmail.com/static/media/logo.fa2454ff.webp"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.58170881.js",
+    "static/css/2.de424728.chunk.css",
+    "static/js/2.af91c62a.chunk.js",
+    "static/css/main.66bf9b42.chunk.css",
+    "static/js/main.d998a1ae.chunk.js"
+  ]
+}
