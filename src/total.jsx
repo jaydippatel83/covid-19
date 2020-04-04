@@ -17,8 +17,7 @@ class Total extends Component {
     }
 
     render() {
-        const data = this.state.dist;
-        console.log("obj", data);
+        const data = this.state.dist; 
         return (
             <div>
                 <div className="container-fluid">

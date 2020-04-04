@@ -108,7 +108,13 @@
 #search-container input::placeholder {
   color:gray ;
   font-weight: bold;
-  text-align: left;
-
-
+  text-align: left; 
+}
+.sticky{
+   
+}
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
 }

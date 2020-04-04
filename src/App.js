@@ -4,11 +4,13 @@ import logo from '../src/images/logo.webp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Total from './total';
+import District from './district';
 
 
 class App extends Component {
   state = {
     states: [],
+    search: ''
   }
   componentDidMount() {
     fetch('https://api.covid19india.org/data.json')
@@ -18,9 +20,15 @@ class App extends Component {
       })
       .catch(console.log)
   }
+  searchSpace = (event) => {
+    let keyword = event.target.value;
+    this.setState({ search: keyword })
+  }
 
   render() {
     const data = this.state.states.statewise;
+
+
 
     return (
       <div>
@@ -39,19 +47,19 @@ class App extends Component {
             </div>
           </div>
           <div className="row  mt-4 mb-2">
-          <div className="col-6">
+            <div className="col-6">
               <div className="col-12 d-flex justify-content-between">
                 <h2 className="text-primary">STATES</h2>
                 <div className=" " id="search-container">
-                  <input type="text" placeholder="Search" />
+                  <input type="text" placeholder="Search" onChange={(e) => this.searchSpace(e)} />
                 </div>
               </div>
             </div>
           </div>
-          <div className="row"> 
-            <div className="col-6 table-height"> 
+          <div className="row">
+            <div className="col-6 table-height">
               <table className="table responsive ">
-                <thead>
+                <thead className="sticky">
                   <tr>
                     <th className="text-secondary" scope="col">State</th>
                     <th className="text-primary" scope="col">Active</th>
@@ -60,20 +68,31 @@ class App extends Component {
                     <th className="text-danger" scope="col">Deaths</th>
                   </tr>
                 </thead>
-                {data ? data.map(st =>
-                  <tbody>
-                    <tr>
-                      <th scope="row">{st.state}</th>
-                      <td>{st.active}</td>
-                      <td>{st.confirmed}</td>
-                      <td>{st.recovered}</td>
-                      <td>{st.deaths}</td>
-                    </tr>
-                  </tbody>
-                ) : null}
+                {
+                  data ? data.filter((data) => {
+                    if (this.state.search == null)
+                      return data
+                    else if (data.state.toLowerCase().includes(this.state.search.toLowerCase()) || data.state.toLowerCase().includes(this.state.search.toLowerCase())) {
+                      return data
+                    }
+                  }).map((st, index) => {
+                    return (
+                      <tbody key={index}>
+                        <tr>
+                          <th scope="row">{st.state}</th>
+                          <td>{st.active}</td>
+                          <td>{st.confirmed}</td>
+                          <td>{st.recovered}</td>
+                          <td>{st.deaths}</td>
+                        </tr>
+                      </tbody>
+                    )
+                  }) : null
+                }
               </table>
             </div>
             <div className="col-6">
+              <District />
             </div>
           </div>
         </div>
