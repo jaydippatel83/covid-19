@@ -1,3 +1,7 @@
+body{
+  overflow: hidden !important;
+}
+
 .App {
   text-align: center;
 }
@@ -80,8 +84,12 @@
   flex: 0 0 20% !important;
   max-width: 25% !important;
 }
-.table-height{
+.table-height,.dist-height{
   max-height: 300px;
+  overflow-y: scroll;
+}
+.dist-height{
+  max-height: 450px;
   overflow-y: scroll;
 }
 
@@ -117,4 +125,4 @@ thead, tbody tr {
   display:table;
   width:100%;
   table-layout:fixed;
-}
+} 

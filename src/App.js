@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import logo from '../src/images/logo.webp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Total from './total';
 import District from './district';
-
+import { connect } from 'react-redux';
 
 class App extends Component {
   state = {
@@ -25,11 +24,9 @@ class App extends Component {
     this.setState({ search: keyword })
   }
 
+
   render() {
-    const data = this.state.states.statewise;
-
-
-
+    const data = this.state.states.statewise; 
     return (
       <div>
         <div className="container-fluid  box-shadow">
@@ -44,6 +41,9 @@ class App extends Component {
           <div className="row">
             <div className="col-6">
               <Total />
+            </div>
+            <div className="col-6">
+              <District />
             </div>
           </div>
           <div className="row  mt-4 mb-2">
@@ -78,7 +78,7 @@ class App extends Component {
                   }).map((st, index) => {
                     return (
                       <tbody key={index}>
-                        <tr>
+                        <tr onClick={()=>this.props.cid(st.state)}>
                           <th scope="row">{st.state}</th>
                           <td>{st.active}</td>
                           <td>{st.confirmed}</td>
@@ -91,14 +91,17 @@ class App extends Component {
                 }
               </table>
             </div>
-            <div className="col-6">
-              <District />
-            </div>
           </div>
         </div>
       </div>
     );
   }
 }
+ 
+const mapDispatchToProps = (dispatch) => {
+  return{
+    cid:(id)=>{dispatch({type:'ADD_ID',payload:id})}
+  }
+}
 
-export default App;
+export default connect(null,mapDispatchToProps)(App);

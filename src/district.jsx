@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -12,38 +13,42 @@ class District extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({ dist: data })
+
+
             })
             .catch(console.log)
     }
 
     render() {
+        const pid = this.props.id;
         const data = this.state.dist;
-        // console.log("obj", data);
+        let distData = null;
+        for (let X in data[pid]) {
+            distData = data[pid].districtData;
+        }
+        const display = distData ? Object.keys(distData).map((d, key) => {
+            console.log(distData, "data"); 
+            return (
+                <li className="list-group-item d-flex justify-content-between" key={key}>
+                    {d}
+                    <span>{distData[d].confirmed}</span>
+                </li>
+            );
+        }) : null
         return (
             <div>
-                <div className="container-fluid">
+                <div className="container-fluid" style={{position:'absolute'}}>
                     <div className="row">
                         <div className="col">
-                            <h2 className="text-primary">INDIA COVID-19 TRACKER</h2>
-                            <p className="font-weight-bold text-secondary">Last Update : {data.lastupdatedtime}</p> 
+                            <h2 className="text-primary text-uppercase">{pid === '' ? 'India' : pid}</h2>
+                            <p className="font-weight-bold text-secondary">State Records</p>
                         </div>
                     </div>
-                    <div className="row justify-content-around">
-                        <div className="col-lg-3 box-a">
-                            <p className="active font-weight-bold">Active</p>
-                            <h3 className="font-weight-bold text-primary">  </h3>
-                        </div>
-                        <div className="col-3 box-b">
-                            <p className="confirm font-weight-bold">Confirmed</p>
-                            <h3 className="font-weight-bold text-warning">  </h3>
-                        </div>
-                        <div className="col-3 box-c">
-                            <p className="recover font-weight-bold">Recovered</p>
-                            <h3 className="font-weight-bold text-success"> </h3>
-                        </div>
-                        <div className="col-3 box-d">
-                            <p className="death font-weight-bold">Deaths</p>
-                            <h3 className="font-weight-bold text-danger">  </h3>
+                    <div className="row">
+                        <div className="col-10 dist-height mb-4 pb-3">
+                            <ul className="list-group">
+                                {display}
+                            </ul> 
                         </div>
                     </div>
                 </div>
@@ -52,4 +57,9 @@ class District extends Component {
     }
 }
 
-export default District;
+const mapStateToProps = (state) => {
+    return {
+        id: state.id
+    }
+}
+export default connect(mapStateToProps, null)(District);
